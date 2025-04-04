@@ -66,15 +66,11 @@ class Box:
 
     def can_rotate(self):
         """
-        กำหนดรูปแบบการหมุนของกล่อง
-        Returns:
-            list: รายการของขนาดกล่องที่เป็นไปได้หลังจากการหมุน
+        Allow box rotation for placement.
         """
         return [
-            (self.width, self.length, self.height),  # ไม่หมุน
-            (self.length, self.width, self.height),  # หมุน 90 องศาตามแกน z
-            (self.height, self.width, self.length),  # หมุน 90 องศาตามแกน y
-            (self.height, self.length, self.width)   # หมุน 90 องศาตามแกน x
+            (self.width, self.length, self.height),  # Original orientation
+            (self.length, self.width, self.height)  # Rotated orientation
         ]
 
     def __repr__(self):
@@ -84,5 +80,5 @@ class Box:
             str: ข้อมูลของกล่อง
         """
         if self.position:
-            return f"{self.box_type}(P{self.priority}): {self.width}x{self.length}x{self.height} @ {self.position}"
-        return f"{self.box_type}(P{self.priority}): {self.width}x{self.length}x{self.height}"
+            return f"{self.box_type}(P{self.priority}): {self.width * 10}x{self.length * 10}x{self.height * 10} mm @ {self.position}"
+        return f"{self.box_type}(P{self.priority}): {self.width * 10}x{self.length * 10}x{self.height * 10} mm"
